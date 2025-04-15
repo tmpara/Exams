@@ -11,7 +11,7 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'EgzaminSty25';
 
-  data: {
+  images: {
     id: number,
     alt: string,
     filename: string,
@@ -31,7 +31,33 @@ export class AppComponent {
     {id: 10, alt:"Szczeniak", filename: "obraz11.jpg", category:2, downloads: 12},
     {id: 11, alt:"Garbus", filename: "obraz12.jpg", category:3, downloads: 321}
   ]
-  test(){
-    
+
+  ngOnInit(){
+    this.images.sort((a,b) => a.category - b.category);
+  }
+
+  showFlowers = true;
+  showAnimals = true;
+  showCars = true;
+  flowers(){
+    if(this.showFlowers == true){
+      this.showFlowers = false;
+    } else{
+      this.showFlowers = true;
+    }
+  }
+  animals(){
+    if(this.showAnimals == true){
+      this.showAnimals = false;
+    } else{
+      this.showAnimals = true;
+    }
+  }
+  cars(){
+    if(this.showCars == true){
+      this.showCars = false;
+    } else{
+      this.showCars = true;
+    }
   }
 }
