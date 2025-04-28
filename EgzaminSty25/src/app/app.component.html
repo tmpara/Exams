@@ -1,22 +1,48 @@
 <h1>Kategorie zdjęć</h1>
 <div class="form-check-inline form-switch">
-  <input class="form-check-input" checked="true" type="checkbox" (change)="flowers()" id="ctrId">
+  <input class="form-check-input" checked="true" type="checkbox" [(ngModel)]="showFlowers" id="ctrId">
   <label class="form-check-label" for="ctrId">Kwiaty</label>
 </div>
 <div class="form-check-inline form-switch">
-  <input class="form-check-input" checked="true" type="checkbox" (change)="animals()" id=" ctrId2">
+  <input class="form-check-input" checked="true" type="checkbox" [(ngModel)]="showAnimals" id=" ctrId2">
   <label class="form-check-label" for=" ctrId2">Zwierzęta</label>
 </div> 
 <div class="form-check-inline form-switch">
-  <input class="form-check-input" checked="true" type="checkbox" (change)="cars()" id=" ctrId3">
+  <input class="form-check-input" checked="true" type="checkbox" [(ngModel)]="showCars" id=" ctrId3">
   <label class="form-check-label" for=" ctrId3">Samochody</label>
 </div> 
 <div>
-  @for (image of images; track $index){
-    <div id="a">
-      <img src="assets/{{image.filename}}">
-      <h4>Pobrań: {{image.downloads}}</h4>
-      <button type="button" class="btn btn-success">Pobierz</button>
-    </div>
+  @if(showFlowers){
+    @for(image of images; track $index){
+      @if(image.category==1){
+        <div id="a">
+          <img src="assets/{{image.filename}}">
+          <h4>Pobrań: {{image.downloads}}</h4>
+          <button type="button" class="btn btn-success" (click)="download($index)">Pobierz</button>
+        </div>  
+      }
+    }  
+  }
+  @if(showAnimals){
+    @for(image of images; track $index){
+      @if(image.category==2){
+        <div id="a">
+          <img src="assets/{{image.filename}}">
+          <h4>Pobrań: {{image.downloads}}</h4>
+          <button type="button" class="btn btn-success" (click)="download($index)">Pobierz</button>
+        </div>  
+      }
+    }  
+  }
+  @if(showCars){
+    @for(image of images; track $index){
+      @if(image.category==3){
+        <div id="a">
+          <img src="assets/{{image.filename}}">
+          <h4>Pobrań: {{image.downloads}}</h4>
+          <button type="button" class="btn btn-success" (click)="download($index)">Pobierz</button>
+        </div>  
+      }
+    }  
   }
 </div>
